@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    <!-- Using the Global Build
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+</head>
+
+<body>
+
+    <div id="app">
+        <button @click="kurang()">-</button>
+        {{ count }}
+        <button @click="tambah()">+</button>
+    </div>
+
+    <!-- Using the ES Module Build -->
+    <!-- <script>
+            const { createApp, ref } = Vue
+
+            createApp({
+                data(){
+                    return {
+                        message: 'Hello, Vue!'
+                    }
+                }
+            }).mount('#app')
+    </script> -->
+
+
+    <!-- Using the ES Module Build with CDN -->
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                tambah() {
+                    this.count++
+                },
+                kurang() {
+                    this.count--
+                }
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+
+</html>
