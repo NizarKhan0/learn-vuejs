@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
+    <!-- Using the Global Build
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+
+    <div id="app" class="justify-center align-items-center d-flex flex-column">
+        <div class="text-center">
+            <button @click="kurang()">-</button>
+            {{ count }}
+            <button @click="tambah()">+</button>
+            <br>
+            {{ message }}
+        </div>
+
+        <!-- v-text -->
+        <div class="text-center">
+            <div v-text="vtext" class="text-2xl font-bold text-blue-500">
+                {{ vtext }}
+            </div>
+        </div>
+
+        <!-- v-html -->
+        <!-- vhtml boleh render tags css dan javascript -->
+         <div v-html="vhtml" class="text-center bg-gray-300 p-4 rounded-lg mt-4">
+            {{ vhtml }}>
+         </div>
+    </div>
+
+    <!-- Using the ES Module Build -->
+    <!-- <script>
+            const { createApp, ref } = Vue
+
+            createApp({
+                data(){
+                    return {
+                        message: 'Hello, Vue!'
+                    }
+                }
+            }).mount('#app')
+    </script> -->
+
+
+    <!-- Using the ES Module Build with CDN -->
+    <script type="module">
+        import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+        createApp({
+            data() {
+                return {
+                    count: 0,
+                    message: 'Hello, Vue!',
+                    // v-text dan v-html ini boleh replace data yg dah by default dari html
+                    // v-text hanya boleh render text sahaja
+                    // v-html boleh render tags css dan javascript
+                    vtext : 'Hello, Vue v-text!',
+                    vhtml: 'Hello, Vue v-html!<br>Ini adalah <strong>HTML</strong> yang di-render.',
+                }
+            },
+            methods: {
+                tambah() {
+                    this.count++
+                },
+                kurang() {
+                    this.count--
+                }
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+
+</html>
